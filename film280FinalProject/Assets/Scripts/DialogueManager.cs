@@ -9,7 +9,6 @@ public class DialogueManager : MonoBehaviour
 
     [Header("UI References")]
     [SerializeField] private TMP_Text dialogueText;
-    [SerializeField] private GameObject next;
 
     [Header("Intro Dialogue")]
     [TextArea(2,5)]
@@ -32,13 +31,9 @@ public class DialogueManager : MonoBehaviour
             return;
         }
         Instance = this;
-        if(next != null)
-        {
-            next.SetActive(false);
-        }
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void TriggerIntroDialogue()
     {
         if(introLines != null && introLines.Length > 0)
         {
@@ -57,10 +52,8 @@ public class DialogueManager : MonoBehaviour
         DisplayCurrentLine();
     }
 
-    public void OnContinue(InputValue value)
+    public void HandleContinueInput()
     {
-        if(!value.isPressed) return;
-        
         if(isTyping)
         {
             skipTyping = true;
@@ -73,10 +66,6 @@ public class DialogueManager : MonoBehaviour
 
     private void DisplayCurrentLine()
     {
-        if(next != null)
-        {
-            next.SetActive(false);
-        }
         if(typingCoroutine != null)
         {
             StopCoroutine(typingCoroutine);
@@ -99,12 +88,8 @@ public class DialogueManager : MonoBehaviour
             }
             dialogueText.text += c;
             yield return new WaitForSeconds(typingSpeed);
-            isTyping = false;
-            if(next != null)
-            {
-                next.SetActive(true);
-            }
         }
+        isTyping = false;
     }
 
     private void AdvanceLine()
@@ -127,10 +112,6 @@ public class DialogueManager : MonoBehaviour
             StopCoroutine(typingCoroutine);
         }
  
-        if (next != null)
-        {
-            next.SetActive(false);
-        }
         currentLines = null;
         currentLineIndex = 0;
     }
