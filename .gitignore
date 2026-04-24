@@ -97,3 +97,10 @@ InitTestScene*.unity*
 
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
+/film280FinalProject/Library
+/film280FinalProject/Temp
+/film280FinalProject/UserSettings
+film280FinalProject/film280FinalProject.slnx
+film280FinalProject/ignore.conf
+/film280FinalProject/.plastic
+/film280FinalProject/.vscode
