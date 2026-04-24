@@ -17,6 +17,8 @@ public class DialogueManager : MonoBehaviour
     [Header("Type Settings")]
     [SerializeField] private float typingSpeed = 0.04f;
 
+    [SerializeField] private GameObject magicCircle;
+
     private string[] currentLines;
     private int currentLineIndex;
     private bool isTyping;
@@ -98,6 +100,10 @@ public class DialogueManager : MonoBehaviour
         if(currentLineIndex < currentLines.Length)
         {
             DisplayCurrentLine();
+            if(currentLineIndex == 3)
+            {
+                magicCircle.SetActive(true);
+            }
         }
         else
         {
