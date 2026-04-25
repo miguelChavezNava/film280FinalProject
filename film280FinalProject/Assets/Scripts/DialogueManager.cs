@@ -17,7 +17,9 @@ public class DialogueManager : MonoBehaviour
     [Header("Type Settings")]
     [SerializeField] private float typingSpeed = 0.04f;
 
+    [Header("Game Objects")]
     [SerializeField] private GameObject magicCircle;
+    [SerializeField] private GameObject introWalls;
 
     private string[] currentLines;
     private int currentLineIndex;
@@ -103,6 +105,10 @@ public class DialogueManager : MonoBehaviour
             if(currentLineIndex == 3)
             {
                 magicCircle.SetActive(true);
+            }
+            if(currentLineIndex == 6)
+            {
+                introWalls.SetActive(false);
             }
         }
         else
